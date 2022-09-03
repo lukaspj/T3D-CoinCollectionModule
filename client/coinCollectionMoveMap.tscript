@@ -1,0 +1,17 @@
+
+if ( isObject( CoinCollectionMoveMap ) )
+    CoinCollectionMoveMap.delete();
+
+new ActionMap(CoinCollectionMoveMap);
+CoinCollectionMoveMap.humanReadableName = "Coin Collection Move Map";
+
+CoinCollectionMoveMap.bind(keyboard, a, moveleft);
+CoinCollectionMoveMap.bind(keyboard, d, moveright);
+CoinCollectionMoveMap.bind(keyboard, left, moveleft);
+CoinCollectionMoveMap.bind(keyboard, right, moveright);
+
+CoinCollectionMoveMap.bind(keyboard, w, moveforward);
+CoinCollectionMoveMap.bind(keyboard, s, movebackward);
+
+CoinCollectionMoveMap.bind(keyboard, space, jump);
+

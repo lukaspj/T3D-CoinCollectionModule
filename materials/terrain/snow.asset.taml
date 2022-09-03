@@ -1,0 +1,28 @@
+<TerrainMaterialAsset
+    AssetName="Snow"
+    materialDefinitionName="Snow"
+    VersionId="1">
+    <TerrainMaterial
+        Name="Snow"
+        DiffuseMapAsset="CoinCollection:snowtop_image"
+        diffuseSize="200"
+        DetailMapAsset="CoinCollection:snowtop_d_image"
+        detailSize="10"
+        internalName="CoinCollection:snow"
+        detailBrightness="1"
+        Enabled="1"
+        isManaged="1"/>
+    <Material
+        Name="TerrainFX_snow"
+        mapTo="CoinCollection:snow"
+        showDust="true"
+        materialTag0="Terrain"
+        terrainMaterials="1">
+        <Material.EffectColors>
+            <EffectColor
+                EffectColor="0.42 0.42 0 1"/>
+            <EffectColor
+                EffectColor="0.42 0.42 0 1"/>
+        </Material.EffectColors>
+    </Material>
+</TerrainMaterialAsset>

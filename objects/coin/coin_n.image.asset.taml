@@ -1,0 +1,6 @@
+<ImageAsset
+   AssetName="CoinNormal"
+   AssetInternal="true"
+   imageType="Normal"
+   isHdrImage="true"
+   imageFile="@assetFile=coin_n.png" />

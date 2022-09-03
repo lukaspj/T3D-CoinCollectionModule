@@ -1,0 +1,30 @@
+<TerrainMaterialAsset
+    AssetName="stone"
+    materialDefinitionName="stone"
+    VersionId="1">
+    <TerrainMaterial
+        Name="stone"
+        DiffuseMapAsset="CoinCollection:stone_image"
+        diffuseSize="200"
+        DetailMapAsset="CoinCollection:stone_d_image"
+        detailSize="10"
+        internalName="CoinCollection:stone"
+        detailBrightness="1"
+        Enabled="1"
+        isManaged="1"/>
+    <Material
+        Name="TerrainFX_stone"
+        mapTo="CoinCollection:stone"
+        showDust="true"
+        footstepSoundId="0"
+        impactSoundId="0"
+        materialTag0="Terrain"
+        terrainMaterials="1">
+        <Material.EffectColors>
+            <EffectColor
+                EffectColor="0.42 0.42 0 1"/>
+            <EffectColor
+                EffectColor="0.42 0.42 0 1"/>
+        </Material.EffectColors>
+    </Material>
+</TerrainMaterialAsset>

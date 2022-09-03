@@ -1,0 +1,6 @@
+<MaterialAsset
+   AssetName="CoinMaterial"
+   scriptFile="coin.material.tscript"
+   materialDefinitionName="CoinMaterial"
+/>
+

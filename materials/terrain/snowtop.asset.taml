@@ -1,0 +1,31 @@
+<TerrainMaterialAsset
+    AssetName="snowtop"
+    materialDefinitionName="snowtop"
+    VersionId="1">
+    <TerrainMaterial
+        Name="snowtop"
+        DiffuseMapAsset="CoinCollection:snowtop_image"
+        diffuseSize="200"
+        DetailMapAsset="CoinCollection:snowtop_d_image"
+        detailSize="3"
+        detailStrength="0.2"
+        internalName="CoinCollection:snowtop"
+        detailBrightness="1"
+        Enabled="1"
+        isManaged="1"/>
+    <Material
+        Name="TerrainFX_snowtop"
+        mapTo="CoinCollection:snowtop"
+        showDust="true"
+        footstepSoundId="0"
+        impactSoundId="0"
+        materialTag0="Terrain"
+        terrainMaterials="1">
+        <Material.EffectColors>
+            <EffectColor
+                EffectColor="0.42 0.42 0 1"/>
+            <EffectColor
+                EffectColor="0.42 0.42 0 1"/>
+        </Material.EffectColors>
+    </Material>
+</TerrainMaterialAsset>

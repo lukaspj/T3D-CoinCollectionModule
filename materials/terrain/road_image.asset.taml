@@ -1,0 +1,3 @@
+<ImageAsset
+    AssetName="road_image"
+    imageFile="@assetFile=road.jpg"/>

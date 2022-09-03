@@ -1,0 +1,30 @@
+<TerrainMaterialAsset
+    AssetName="grass2"
+    materialDefinitionName="grass2"
+    VersionId="1">
+    <TerrainMaterial
+        Name="grass2"
+        DiffuseMapAsset="CoinCollection:grass2_image"
+        diffuseSize="200"
+        DetailMapAsset="CoinCollection:grass2_d_image"
+        detailSize="10"
+        internalName="CoinCollection:grass2"
+        detailBrightness="1"
+        Enabled="1"
+        isManaged="1"/>
+    <Material
+        Name="TerrainFX_grass2"
+        mapTo="CoinCollection:grass2"
+        showDust="true"
+        footstepSoundId="0"
+        impactSoundId="0"
+        materialTag0="Terrain"
+        terrainMaterials="1">
+        <Material.EffectColors>
+            <EffectColor
+                EffectColor="0.42 0.42 0 1"/>
+            <EffectColor
+                EffectColor="0.42 0.42 0 1"/>
+        </Material.EffectColors>
+    </Material>
+</TerrainMaterialAsset>

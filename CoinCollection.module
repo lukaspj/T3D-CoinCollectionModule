@@ -1,0 +1,15 @@
+﻿<ModuleDefinition
+   canSave="true"
+   canSaveDynamicFields="true"
+   ModuleId="CoinCollection"
+   VersionId="1"
+   Group="Game"
+   scriptFile="CoinCollection"
+   CreateFunction="onCreate"
+   DestroyFunction="onDestroy">
+   <DeclaredAssets
+      canSave="true"
+      canSaveDynamicFields="true"
+      Extension="asset.taml"
+      Recurse="true"/>
+</ModuleDefinition>

@@ -1,0 +1,30 @@
+<TerrainMaterialAsset
+    AssetName="rocks"
+    materialDefinitionName="rocks"
+    VersionId="1">
+    <TerrainMaterial
+        Name="rocks"
+        DiffuseMapAsset="CoinCollection:rocks1_image"
+        diffuseSize="200"
+        DetailMapAsset="CoinCollection:rocks1_d_image"
+        detailSize="10"
+        internalName="CoinCollection:rocks"
+        detailBrightness="1"
+        Enabled="1"
+        isManaged="1"/>
+    <Material
+        Name="TerrainFX_rocks"
+        mapTo="CoinCollection:rocks"
+        showDust="true"
+        footstepSoundId="0"
+        impactSoundId="0"
+        materialTag0="Terrain"
+        terrainMaterials="1">
+        <Material.EffectColors>
+            <EffectColor
+                EffectColor="0.42 0.42 0 1"/>
+            <EffectColor
+                EffectColor="0.42 0.42 0 1"/>
+        </Material.EffectColors>
+    </Material>
+</TerrainMaterialAsset>

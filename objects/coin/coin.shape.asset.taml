@@ -1,0 +1,6 @@
+<ShapeAsset
+   AssetName="CoinShape"
+   fileName="@assetFile=coin.dts"
+   diffuseImposterFileName="@assetFile=coin.dts_imposter.dds"
+   normalImposterFileName="@assetFile=coin.dts_imposter_normals.dds"
+   materialSlots0="@asset=CoinCollection:CoinMaterial"/>

@@ -1,0 +1,6 @@
+﻿function clientCmdShowVictory(%score)
+{
+    MessageBoxOK("You Win!",
+            "Congratulation you found" SPC %score SPC "coins!",
+            "disconnect();" );
+}

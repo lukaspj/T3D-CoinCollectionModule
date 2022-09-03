@@ -1,0 +1,6 @@
+<TerrainAsset
+    AssetName="CoinTerrain"
+    terrainFile="@assetFile=CoinTerrain.ter"
+    genWithNoise="0"
+    resolution="1024"
+    VersionId="1"/>

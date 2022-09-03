@@ -1,0 +1,6 @@
+<ImageAsset AssetName="CoinAlbedo"
+            imageFile="@assetFile=coin.png"
+            UseMips="true"
+            isHDRImage="false"
+            imageType="albedo"
+/>

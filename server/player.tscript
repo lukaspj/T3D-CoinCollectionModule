@@ -1,0 +1,10 @@
+datablock PlayerData( CoinCollectorPlayer ) {
+    renderFirstPerson = false;
+
+    // Third person shape
+    ShapeAsset = "Prototyping:Playerbot_shape";
+    cameraMaxDist = 3;
+
+    allowImageStateAnimation = true;
+    pickupRadius = "1";
+};

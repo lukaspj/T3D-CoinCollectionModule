@@ -1,0 +1,10 @@
+<LevelAsset
+    AssetName="CoinLevel"
+    LevelFile="@assetFile=CoinLevel.mis"
+    LevelName="CoinLevel"
+    PostFXPresetFile="@assetFile=CoinLevel.postfxpreset.tscript"
+    DecalsFile="@assetFile=CoinLevel.mis.decals"
+    ForestFile="@assetFile=CoinLevel.forest"
+    NavmeshFile="@assetFile=CoinLevel.nav"
+    staticObjectAssetDependency0="@asset=CoinCollection:CoinTerrain"
+    VersionId="1"/>

@@ -1,0 +1,68 @@
+function escapeFromGame() {
+    disconnect();
+}
+
+$movementSpeed = 1; // m/s
+
+function setSpeed(%speed)
+{
+    if(%speed)
+        $movementSpeed = %speed;
+}
+
+function moveleft(%val)
+{
+    $mvLeftAction = %val * $movementSpeed;
+}
+
+function moveright(%val)
+{
+    $mvRightAction = %val * $movementSpeed;
+}
+
+function moveforward(%val)
+{
+    $mvForwardAction = %val * $movementSpeed;
+}
+
+function movebackward(%val)
+{
+    $mvBackwardAction = %val * $movementSpeed;
+}
+
+function getMouseAdjustAmount(%val)
+{
+    // based on a default camera FOV of 90'
+    return (%val * ($cameraFov / 90) * 0.01) * $pref::Input::LinkMouseSensitivity;
+}
+
+function yaw(%val)
+{
+    %yawAdj = getMouseAdjustAmount(%val);
+    if(ServerConnection.isControlObjectRotDampedCamera())
+    {
+        // Clamp and scale
+        %yawAdj = mClamp(%yawAdj, -m2Pi()+0.01, m2Pi()-0.01);
+        %yawAdj *= 0.5;
+    }
+
+    $mvYaw += %yawAdj;
+}
+
+function pitch(%val)
+{
+    %pitchAdj = getMouseAdjustAmount(%val);
+    if(ServerConnection.isControlObjectRotDampedCamera())
+    {
+        // Clamp and scale
+        %pitchAdj = mClamp(%pitchAdj, -m2Pi()+0.01, m2Pi()-0.01);
+        %pitchAdj *= 0.5;
+    }
+
+    $mvPitch += %pitchAdj;
+}
+
+function jump(%val)
+{
+    $mvTriggerCount2++;
+}
