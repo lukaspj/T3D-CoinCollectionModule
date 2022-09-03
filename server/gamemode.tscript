@@ -143,14 +143,14 @@ function CoinCollectionGameMode::onClientEnterGame(%this, %client) {
 
     %this.spawnControlObject(%client);
 
-    commandToClient(%client, 'OnEnterGame');
-
     messageClient(
             %client, 'MsgClientJoin',
                     "\c2Welcome to the Torque demo app %1.",
-                    %client.playerName,
+                    getTaggedString(%client.playername),
                     %client,
-                    %client.isAIControlled()
+                    %client.coinsfound,
+                    %client.kills, %client.deaths,
+                    %client.isAiControlled()
             );
 
     messageAllExcept(
@@ -158,17 +158,26 @@ function CoinCollectionGameMode::onClientEnterGame(%this, %client) {
                     "-1",
                     'MsgClientJoin',
                     "\c1 % 1 joined the game.",
+                    getTaggedString(%client.playername),
                     %client,
+                    %client.coinsfound,
+                    %client.kills, %client.deaths,
                     %client.isAiControlled()
             );
+
+
+    foreach(%client in ClientGroup) {
+        messageAll('MsgRefreshPlayer', -1,
+                getTaggedString(%client.playername),
+                %client, %client.coinsfound,
+                %client.kills, %client.deaths);
+    }
 }
 
 //This is called when the player leaves the game server. It's used to clean up anything that
 //was spawned or setup for the client when it connected, in onClientEnterGame
 //These callbacks are activated in core/clientServer/scripts/server/levelDownload.tscript
 function CoinCollectionGameMode::onClientLeaveGame(%this, %client) {
-    commandToClient(%client, 'OnLeaveGame');
-
     messageAllExcept(
             %client,
                     "-1",

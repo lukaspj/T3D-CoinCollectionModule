@@ -5,11 +5,12 @@ addMessageCallback('MsgClientJoin', SBGUIPlayerJoined);
 addMessageCallback('MsgClientDrop', SBGUIPlayerLeft);
 addMessageCallback('MsgClientScoreChanged', SBGUIScoreChanged);
 addMessageCallback('MsgCoinPickedUp', SBGUICoinPickup);
+addMessageCallback('MsgRefreshPlayer', SBGUIRefreshPlayer);
 
 function SBGUIPlayerJoined(%msgType, %msgString, %clientName,
-        %clientId, %guid, %score, %kills,
+        %clientId, %score, %kills,
         %deaths, %isAI, %isAdmin, %isSuperAdmin) {
-    ScoreBoardGUI.addPlayer(%clientId, %clientName, 0, %kills, deaths);
+    ScoreBoardGUI.addPlayer(%clientId, detag(%clientName), %score, %kills, %deaths);
 }
 
 function SBGUIPlayerLeft(%msgType, %msgString, %clientName, %clientId) {
@@ -24,6 +25,12 @@ function SBGUIScoreChanged(%msgType, %msgString, %clientName,
 function SBGUICoinPickup(%msgType, %msgString, %clientName,
         %clientId, %score, %kills, %deaths) {
     ScoreBoardGUI.updatePlayer(%clientId, %score, %kills, %deaths);
+}
+
+function SBGUIRefreshPlayer(%msgType, %msgString, %clientName,
+        %clientId, %score, %kills,
+        %deaths, %isAI, %isAdmin, %isSuperAdmin) {
+    ScoreBoardGUI.addPlayer(%clientId, %clientName, %score, %kills, %deaths);
 }
 
 //-----------------------------------------------------------------------------

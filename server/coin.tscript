@@ -16,7 +16,7 @@ function Coin::onCollision(%this, %obj, %col, %vec, %len) {
 
     %col.client.coinsfound++;
 
-    messageAll('MsgCoinPickedUp', -1, %col.client.playername,
+    messageAll('MsgCoinPickedUp', -1, getTaggedString(%col.client.playername),
             %col.client, %col.client.coinsfound,
             %col.client.kills, %col.client.deaths);
 

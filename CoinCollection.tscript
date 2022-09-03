@@ -28,8 +28,6 @@ function CoinCollection::onDestroy(%this) {
 //when the game server is processed.
 //These callbacks are activated in core/clientServer/scripts/server/levelLoad.tscript
 function CoinCollection::initServer(%this) {
-    %this.registerDatablock("./server/player.tscript");
-    %this.registerDatablock("./server/coin.tscript");
     %this.queueExec("./server/gamemode.tscript");
 }
 
@@ -47,6 +45,9 @@ function CoinCollection::onCreateGameServer(%this) {
     //to pass data to the client, it iterates over this list and processes it, ensuring all datablocks
     //are the most up to date possible for transmission to the connecting client
     //%this.registerDatablock("./datablocks/ExampleDatablock." @ );
+
+    %this.registerDatablock("./server/player.tscript");
+    %this.registerDatablock("./server/coin.tscript");
 }
 
 //This is called when a game session server is destroyed, when the game shuts down. It's called from
@@ -83,6 +84,8 @@ function CoinCollection::initClient(%this) {
 //
 //When a client is connected, the gamemode logic also has a callback activated - ExampleGameMode::onClientEnterGame().
 function CoinCollection::onCreateClientConnection(%this) {
+    ScoreBoardGUI.clear();
+    CoinCollectionMoveMap.push();
 }
 
 //This is called when a client game session disconnects from a game server
@@ -92,4 +95,5 @@ function CoinCollection::onCreateClientConnection(%this) {
 //
 //When a client disconnects, the gamemode logic has a callback activated - ExampleGameMode::onClientLeaveGame().
 function CoinCollection::onDestroyClientConnection(%this) {
+    CoinCollectionMoveMap.pop();
 }

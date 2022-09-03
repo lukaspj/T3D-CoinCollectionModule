@@ -11,12 +11,3 @@ function clientCmdShowDefeat(%score)
             "You lost with" SPC %score SPC "coins",
             "disconnect();" );
 }
-
-function clientCmdOnEnterGame() {
-    ScoreBoardGUI.clear();
-    CoinCollectionMoveMap.push();
-}
-
-function clientCmdOnLeaveGame() {
-    CoinCollectionMoveMap.pop();
-}
