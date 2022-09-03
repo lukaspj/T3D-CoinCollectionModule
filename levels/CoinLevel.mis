@@ -58,7 +58,6 @@ new Scene(CoinLevel) {
          originalAssetName = "CoinTerrain";
    };
    new SimGroup(Coins) {
-
       new StaticShape() {
          dataBlock = "Coin";
          position = "1.55216 -0.253448 -0.776475";

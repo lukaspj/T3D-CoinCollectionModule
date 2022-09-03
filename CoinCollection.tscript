@@ -61,6 +61,12 @@ function CoinCollection::onDestroyGameServer(%this) {
 //in the initClient() function. It sets up common elements that the client will always need, such as scripts, GUIs
 //and the like
 function CoinCollection::initClient(%this) {
+    %this.queueExec("./client/gamemode.tscript");
+
+    %this.queueExec("./client/gui/customProfiles.tscript");
+    %this.queueExec("./client/gui/scoreBoard.gui");
+    %this.queueExec("./client/gui/scoreBoard.tscript");
+
     %this.queueExec("./client/inputCommands.tscript");
     %this.queueExec("./client/coinCollectionMoveMap.tscript");
     %this.queueExec("./client/commands.tscript");

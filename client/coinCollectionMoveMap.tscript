@@ -1,4 +1,3 @@
-
 if ( isObject( CoinCollectionMoveMap ) )
     CoinCollectionMoveMap.delete();
 
@@ -15,3 +14,4 @@ CoinCollectionMoveMap.bind(keyboard, s, movebackward);
 
 CoinCollectionMoveMap.bind(keyboard, space, jump);
 
+CoinCollectionMoveMap.bind(keyboard, f, showScoreBoard);

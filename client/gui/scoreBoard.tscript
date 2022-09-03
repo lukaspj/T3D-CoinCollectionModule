@@ -1,0 +1,84 @@
+﻿//-----------------------------------------------------------------------------
+// Callbacks
+//-----------------------------------------------------------------------------
+addMessageCallback('MsgClientJoin', SBGUIPlayerJoined);
+addMessageCallback('MsgClientDrop', SBGUIPlayerLeft);
+addMessageCallback('MsgClientScoreChanged', SBGUIScoreChanged);
+addMessageCallback('MsgCoinPickedUp', SBGUICoinPickup);
+
+function SBGUIPlayerJoined(%msgType, %msgString, %clientName,
+        %clientId, %guid, %score, %kills,
+        %deaths, %isAI, %isAdmin, %isSuperAdmin) {
+    ScoreBoardGUI.addPlayer(%clientId, %clientName, 0, %kills, deaths);
+}
+
+function SBGUIPlayerLeft(%msgType, %msgString, %clientName, %clientId) {
+    ScoreBoardGUI.removePlayer(%clientId);
+}
+
+function SBGUIScoreChanged(%msgType, %msgString, %clientName,
+        %kills, %deaths, %clientId) {
+    ScoreBoardGUI.updatePlayer(%clientId, "null", %kills, %deaths);
+}
+
+function SBGUICoinPickup(%msgType, %msgString, %clientName,
+        %clientId, %score, %kills, %deaths) {
+    ScoreBoardGUI.updatePlayer(%clientId, %score, %kills, %deaths);
+}
+
+//-----------------------------------------------------------------------------
+// ScoreBoardGUI utility methods
+//-----------------------------------------------------------------------------
+function ScoreBoardGUI::toggle(%this) {
+    if (%this.isAwake())
+        Canvas.popDialog(%this);
+    else Canvas.pushDialog(%this);
+}
+
+function ScoreBoardGUI::clear(%this) {
+    // Override to clear the list.
+    ScoreBoardGUIList.clear();
+}
+
+//-----------------------------------------------------------------------------
+// ScoreBoardGUI data handler methods
+//-----------------------------------------------------------------------------
+
+function ScoreBoardGUI::addPlayer(%this, %clientID, %name, %score, %kills, %deaths) {
+    %text = StripMLControlChars(%name) TAB %score TAB %kills TAB %deaths;
+
+    // Update or add the player to the control
+    if (ScoreBoardGUIList.getRowNumById(%clientId) == -1)
+        ScoreBoardGUIList.addRow(%clientId, %text);
+    else ScoreBoardGUIList.setRowById(%clientId, %text);
+
+    // Sorts by score
+    ScoreBoardGUIList.sortNumerical(1, false);
+    ScoreBoardGUIList.clearSelection();
+}
+
+function ScoreBoardGUI::removePlayer(%this, %clientId) {
+    PlayerListGuiList.removeRowById(%clientId);
+}
+
+function ScoreBoardGUI::updatePlayer(%this, %clientId, %score, %kills, %deaths) {
+    %text = ScoreBoardGUIList.getRowTextById(%clientId);
+    if (%score !$= "null")
+        %text = setField(%text, 1, %score);
+    %text = setField(%text, 2, %kills);
+    %text = setField(%text, 3, %deaths);
+    ScoreBoardGUIList.setRowById(%clientId, %text);
+    ScoreBoardGUIList.sortNumerical(1, false);
+    ScoreBoardGUIList.clearSelection();
+}
+
+function ScoreBoardGUI::resetScores(%this) {
+    for(%idx = 0; %idx < ScoreBoardGUIList.rowCount();%idx++) {
+        %text = ScoreBoardGUIList.getRowText(%idx);
+        %text = setField(%text, 1, "0");
+        %text = setField(%text, 2, "0");
+        %text = setField(%text, 3, "0");
+        ScoreBoardGUIList.setRowById(ScoreBoardGUIList.getRowId(%idx), %text);
+    }
+    ScoreBoardGUIList.clearSelection();
+}

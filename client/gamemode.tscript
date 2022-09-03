@@ -1,0 +1,21 @@
+﻿//This is called when the player has connected and finaly setup is done and control is handed
+//over to the client. It allows a point to special-case setting the client's canvas content
+//(Such as a gamemode-specific GUI) or setting up gamemode-specific keybinds/control schemes
+function CoinCollectionGameMode::onInitialControlSet(%this) {
+}
+
+//-----------------------------------------------------------------------------
+// Callbacks
+//-----------------------------------------------------------------------------
+addMessageCallback('MsgClientJoin', PlayerJoined);
+addMessageCallback('MsgClientDrop', PlayerLeft);
+
+function PlayerJoined(%msgType, %msgString, %clientName,
+        %clientId, %guid, %score, %kills,
+        %deaths, %isAI, %isAdmin, %isSuperAdmin) {
+    CoinCollectionMoveMap.push();
+}
+
+function PlayerLeft(%msgType, %msgString, %clientName, %clientId) {
+    CoinCollectionMoveMap.pop();
+}

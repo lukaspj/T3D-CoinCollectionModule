@@ -4,3 +4,19 @@
             "Congratulation you found" SPC %score SPC "coins!",
             "disconnect();" );
 }
+
+function clientCmdShowDefeat(%score)
+{
+    MessageBoxOK("You Lost!",
+            "You lost with" SPC %score SPC "coins",
+            "disconnect();" );
+}
+
+function clientCmdOnEnterGame() {
+    ScoreBoardGUI.clear();
+    CoinCollectionMoveMap.push();
+}
+
+function clientCmdOnLeaveGame() {
+    CoinCollectionMoveMap.pop();
+}

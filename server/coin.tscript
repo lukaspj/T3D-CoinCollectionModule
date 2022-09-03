@@ -14,9 +14,27 @@ function Coin::onCollision(%this, %obj, %col, %vec, %len) {
     %emitterNode.schedule(200, "delete");
     %obj.delete();
 
-    $CoinsFound++;
-    if (Coins.getCount() <= 0) {
-        commandToClient(%col.client, 'ShowVictory', $CoinsFound);
+    %col.client.coinsfound++;
+
+    messageAll('MsgCoinPickedUp', -1, %col.client.playername,
+            %col.client, %col.client.coinsfound,
+            %col.client.kills, %col.client.deaths);
+
+    if(Coins.getCount() <= 0)
+    {
+        %winnerClient = %col.client;
+        foreach(%idxClient in ClientGroup)
+        {
+            if(%idxClient.coinsfound > %winnerClient.coinsfound) {
+                commandToClient(%winnerClient, 'ShowDefeat', %winnerClient.coinsfound);
+                %winnerClient = %idxClient;
+            } else {
+                commandToClient(%idxClient, 'ShowDefeat', %idxClient.coinsfound);
+            }
+        }
+
+        commandToClient(%winnerClient,
+                'ShowVictory',%idxClient.coinsfound);
     }
 }
 

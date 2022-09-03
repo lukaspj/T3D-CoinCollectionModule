@@ -143,6 +143,8 @@ function CoinCollectionGameMode::onClientEnterGame(%this, %client) {
 
     %this.spawnControlObject(%client);
 
+    commandToClient(%client, 'OnEnterGame');
+
     messageClient(
             %client, 'MsgClientJoin',
                     "\c2Welcome to the Torque demo app %1.",
@@ -165,6 +167,8 @@ function CoinCollectionGameMode::onClientEnterGame(%this, %client) {
 //was spawned or setup for the client when it connected, in onClientEnterGame
 //These callbacks are activated in core/clientServer/scripts/server/levelDownload.tscript
 function CoinCollectionGameMode::onClientLeaveGame(%this, %client) {
+    commandToClient(%client, 'OnLeaveGame');
+
     messageAllExcept(
             %client,
                     "-1",
@@ -173,11 +177,4 @@ function CoinCollectionGameMode::onClientLeaveGame(%this, %client) {
                     %client,
                     %client.isAiControlled()
             );
-}
-
-//This is called when the player has connected and finaly setup is done and control is handed
-//over to the client. It allows a point to special-case setting the client's canvas content
-//(Such as a gamemode-specific GUI) or setting up gamemode-specific keybinds/control schemes
-function CoinCollectionGameMode::onInitialControlSet(%this) {
-
 }

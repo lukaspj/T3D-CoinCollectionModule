@@ -66,3 +66,9 @@ function jump(%val)
 {
     $mvTriggerCount2++;
 }
+
+function showScoreBoard(%val)
+{
+    if (%val)
+        ScoreBoardGUI.toggle();
+}
